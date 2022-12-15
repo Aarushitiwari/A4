@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package book;
+
+// Define the Book message
+message Book {
+  // ISBN - a unique string id (a primary key)
+  string ISBN = 1;
+
+  // Title - a string
+  string title = 2;
+
+  // Author - a string name
+  string author = 3;
+
+  // Genre - an enum field
+  enum Genre {
+    UNKNOWN = 0;
+    FICTION = 1;
+    NON_FICTION = 2;
+    ROMANCE = 3;
+  }
+  Genre genre = 4;
+
+  // Publishing year - an integer
+  int32 publishing_year = 5;
+}

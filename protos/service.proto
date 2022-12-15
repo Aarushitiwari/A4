@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package book;
+
+import "book.proto";
+
+service InventoryService {
+  rpc CreateBook(book.Book) returns (CreateBookResponse) {}
+  rpc GetBook(GetBookRequest) returns (Book) {}
+}
+
+// CreateBook RPC takes a Book object as input and returns a CreateBookResponse message,
+// which contains a success field to indicate whether the book was created successfully
+message CreateBookResponse {
+  bool success = 1;
+}
+
+// GetBook RPC takes a GetBookRequest message as input,
+// which contains the ISBN of the book to retrieve, and returns the Book object if found
+message GetBookRequest {
+  string ISBN = 1;
+}

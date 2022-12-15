@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package book;
+
+// Import the Book message
+import "book.proto";
+
+// Define the InventoryItem message
+message InventoryItem {
+  // Inventory number - a primary key
+  string inventory_number = 1;
+
+  // A Oneof field which can only refer to a Book object
+  oneof item_type {
+    Book book = 2;
+  }
+
+  // Status - an enum of "available" or "taken"
+  enum Status {
+    UNKNOWN = 0;
+    AVAILABLE = 1;
+    TAKEN = 2;
+  }
+  Status status = 3;
+}
